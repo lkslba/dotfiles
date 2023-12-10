@@ -100,6 +100,11 @@
        :desc "Open UI Graph "
        "n r G" #'org-roam-ui-open)
 
+;; Citar
+(use-package citar
+  :custom
+  (citar-bibliography '("~/org/config/bibliography.bib")))
+
 ;; LaTeX export:
 (with-eval-after-load 'ox-latex
   (setq org-latex-listings 't)
@@ -120,8 +125,8 @@
 ;; Org-Mode:
 (after! org
   :config
-  (setq org-directory "~/documents/emacs/org/"
-        org-cite-global-bibliography (list "~/Documents/emacs/org/bibliography.bib")
+  (setq org-directory "~/org/"
+        org-cite-global-bibliography (list "~/org/config/bibliography.bib")
         org-agenda-skip-scheduled-if-done t
         org-startup-indented t
         org-startup-align-all-tables t
@@ -135,19 +140,80 @@
           ("SOMEDAY" :foreground "#8be9fd" :weight normal :underline nil)
           ("DONE" :foreground "#50fa7b" :weight bold :underline nil)
           ("CANCELLED" :foreground "#ff5555" :weight bold :underline nil))
-        org-agenda-files (list "~/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org")
+        org-agenda-files (list "~/org/org-agenda/")
         org-log-done 'time
         org-capture-templates '(
                                 ("j" "Journal" entry
-                                (file+datetree "/Users/lkslba/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/journal.org")
+                                (file+datetree "~/org/org-agenda/journal.org")
                                 "* %<%H:%M>\n%?"
                                 :jump-to-captured t
                                 :immediate-finish t)
                                 ("t" "Journal ToDo" entry
-                                (file+datetree "/Users/lkslba/Library/Mobile Documents/iCloud~com~appsonthemove~beorg/Documents/org/journal.org")
+                                (file+datetree  "~/org/org-agenda/journal.org")
                                 "* %<%H:%M> Daily Todo's\n** TODO %?\nSCHEDULED: %<%Y-%m-%d %a>"
                                 :jump-to-captured t))
         )
+
+;; Org-Roam:
+(use-package! org-roam
+  :after org
+  :ensure t
+  :custom
+  (org-roam-directory "~/org/roam/")
+  (org-roam-completion-everywhere t)
+  (org-roam-db-autosync-mode t)
+  (org-roam-capture-templates
+   '(("d" "default" plain
+      "* notes\n\n%?\n\n* links\n\n* sources\n\n"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: %^G\n")
+      :unnarrowed t
+      :jump-to-captured t)
+     ("t" "to be done" plain
+      "* notes\n\n%?\n\n* links\n\n* sources\n\n"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: tbd:%^G\n")
+      :unnarrowed t
+      :immediate-finish t)
+     ("T" "topic" plain
+      "%?"
+      :if-new (file+head "%<%Y%m%d%H%M%S>-${slug}.org" "#+title: ${title}\n#+filetags: topic:%^G\n")
+      :unnarrowed t
+      :immediate-finish t)
+     ("n" "literature note" plain
+         "* notes\n\n%?\n\n* sources\n[cite:@${citekey}]\n\n* links\n\n"
+         :if-new (file+head "%(expand-file-name (or citar-org-roam-subdir \"\") org-roam-directory)/%<%Y%m%d%H%M%S>-${citekey}.org"
+          "#+title: ${title}.\n#+created: %U\n#+last_modified: %U\n#+filetags: bib:%^G\n\n")
+         :unnarrowed t
+         :jump-to-captured t))))
+
+;; Org-Roam-Bibtex
+;; (use-package! org-roam-bibtex
+;;   :after org-roam
+;;   :config
+;;   (setq orb-roam-ref-format 'org-cite))
+;;
+;; Citar
+(use-package citar
+  :custom
+  (citar-bibliography '("~/org/config/bibliography.bib")))
+
+(use-package! citar-org-roam
+  :after (citar org-roam)
+  :config
+  (setq citar-org-roam-capture-template-key "n")
+  (citar-org-roam-mode))
+
+(setq bibtex-completion-bibliography '("~/org/config/bibliography.bib")
+      bibtex-completion-pdf-field "File")
+
+
+;; Org-Roam-UI
+(use-package! org-roam-ui
+  :ensure t
+  :after org-roam
+  (setq org-roam-ui-sync-theme t
+        org-roam-ui-follow t
+        org-roam-ui-update-on-save t
+        org-roam-ui-open-on-start t))
 
 ;; encryption:
   (require 'org-crypt)

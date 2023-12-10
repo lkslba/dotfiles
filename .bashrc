@@ -117,8 +117,9 @@ export TERMINAL=kitty
 export TERM=xterm-24bit
 alias ssh="TERM=xterm-256color ssh"
 
-#add doom to path:
+
 export PATH="$HOME/.config/emacs/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 neofetch
 alias config='/usr/bin/git --git-dir=/home/lkslba/.cfg/ --work-tree=/home/lkslba'

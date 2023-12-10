@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -37,6 +37,7 @@ exec --no-startup-id nm-applet
 # Nitrogen restore Wallpaper at startup
 exec_always --no-startup-id nitrogen --restore
 
+exec --no-startup-id lxpolkit
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -55,14 +56,16 @@ tiling_drag modifier titlebar
 # start a terminal
 bindsym $mod+Return exec i3-sensible-terminal
 
-# start file manager
-bindsym $mod+Shift+f exec pcmanfm
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show drun 
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+Shift+f exec rofi -show filebrowser
+bindsym $mod+w exec rofi -show window
+bindsym $mod+p exec rofi -show power-menu -modi power-menu:rofi-power-menu
+# bind rofi-snippet:
+bindsym $mod+Shift+d exec --no-startup-id "~/go/bin/rofi-snippet" 
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -104,7 +107,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+t layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
