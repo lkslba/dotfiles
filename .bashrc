@@ -132,3 +132,4 @@ neofetch
 
 
 
+alias config='/usr/bin/git --git-dir=/home/lkslba/.dotfiles/ --work-tree=/home/lkslba'
