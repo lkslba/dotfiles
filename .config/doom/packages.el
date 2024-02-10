@@ -64,3 +64,5 @@
 (package! citar-org-roam)
 (package! org-drill)
 (package! org-kanban)
+(package! org-reveal)
+(package! citeproc)

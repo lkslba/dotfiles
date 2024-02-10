@@ -22,7 +22,7 @@
 ;; accept. For example:
 ;;
 (setq doom-font (font-spec :family "JetBrains Mono" :size 14)
-;;    doom-variable-pitch-font (font-spec :family "Iosevka Aile" :size 16)
+      doom-variable-pitch-font (font-spec :family "Avenir Next LT Pro" :size 16)
       doom-big-font (font-spec :family "JetBrains Mono" :size 25))
 
 ;; Set reusable font name variables
@@ -92,6 +92,8 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
+;; copy-paste:
+cua-mode 1
 ;;
 ;; Custum Keybindings:
 (map! :leader
@@ -107,7 +109,7 @@
 
 ;; LaTeX export:
 (with-eval-after-load 'ox-latex
-  (setq org-latex-listings 't)
+  (setq org-latex-src-block-backend 'listings)
   (add-to-list 'org-latex-classes
                '("org-plain-latex"
                  "\\documentclass{article}
@@ -119,6 +121,8 @@
                  ("\\subsubsection{%s}" . "\\subsubsection*{%s}")
                  ("\\paragraph{%s}" . "\\paragraph*{%s}")
                  ("\\subparagraph{%s}" . "\\subparagraph*{%s}"))))
+;;
+
 
 
 ;;
@@ -129,6 +133,7 @@
         org-cite-global-bibliography (list "~/org/config/bibliography.bib")
         org-agenda-skip-scheduled-if-done t
         org-startup-indented t
+        display-line-numbers-type nil
         org-startup-align-all-tables t
         org-todo-keywords '((sequence "TODO(t)" "TOREAD(r)" "TOBUY(b)" "INPROGRESS(i)" "WAITING(w)" "SOMEDAY(s)" "|" "DONE(d)" "CANCELLED(c)"))
         org-todo-keyword-faces
@@ -262,12 +267,7 @@
   ;; Stop displaying inline images
   (org-remove-inline-images)
   ;; reset font-settings
-  (setq-local face-remapping-alist nil)
-
-  ;; Stop centering the document
-  (display-line-numbers-mode 1)
-  (visual-fill-column-mode 0)
-  (visual-line-mode 0))
+  (setq-local face-remapping-alist nil))
 
 (defun my/org-present-prepare-slide (buffer-name heading)
   ;; Show only top-level headlines
@@ -320,8 +320,10 @@
 
 ;; Visual-fill-column
 (use-package! visual-fill-column
-  :config
-  (setq visual-fill-column-width 120))
+  :hook (org-mode . visual-fill-column-mode)
+  :init
+  (setq visual-fill-column-width 110
+        visual-fill-column-center-text t))
 
 ;; completion:
 (after! company
