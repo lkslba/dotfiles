@@ -21,16 +21,16 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "JetBrains Mono" :size 14)
-      doom-variable-pitch-font (font-spec :family "Avenir Next LT Pro" :size 16)
-      doom-big-font (font-spec :family "JetBrains Mono" :size 25))
+(setq doom-font (font-spec :family "Jetbrains Mono" :size 14)
+      doom-variable-pitch-font (font-spec :family "Avenir Next LT Pro Regular" :size 16)
+      doom-big-font (font-spec :family "Jetbrains Mono" :size 25))
 
 ;; Set reusable font name variables
-(defvar my/fixed-width-font "JetBrains Mono"
-  "The font to use for monospaced (fixed width) text.")
+;;(defvar my/fixed-width-font "Monospace Regular"
+;; "The font to use for monospaced (fixed width) text.")
 
-(defvar my/variable-width-font "Iosevka Aile"
-  "The font to use for variable-pitch (document) text.")
+;;(defvar my/variable-width-font "Sans Regular"
+;;  "The font to use for variable-pitch (document) text.")
 
 (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
       doom-themes-enable-italic t) ; if nil, italics is universally disabled

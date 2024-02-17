@@ -1,0 +1,38 @@
+.xfce4-panel {
+   /*border-bottom-left-radius: 5px;
+   border-bottom-right-radius: 5px;
+   border-top-left-radius: 0px;
+   border-top-right-radius: 0px;
+
+   min-width: 600px; /* Set the minimum width 
+   max-width: 600px;*/
+}
+ 
+.xfce4-panel .tasklist .toggle :checked {
+  border-radius: 10px;
+}
+ 
+.tasklist button:checked {
+  border-bottom: 3px solid white;
+}
+ 
+.flat,
+.toggle {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+  padding: 4px;
+}
+.flat:hover,
+.toggle:hover {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+  padding: 4px;
+}
+.flat:checked,
+.toggle:checked {
+  font-family: 'JetBrainsMono Nerd Font';
+  font-size: 16px;
+  border-bottom: 3px solid white;
+  padding: 4px;
+}
+ 

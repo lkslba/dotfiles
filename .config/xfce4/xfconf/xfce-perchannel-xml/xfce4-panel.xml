@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-panel" version="1.0">
+  <property name="configver" type="int" value="2"/>
+  <property name="panels" type="array">
+    <value type="int" value="2"/>
+    <property name="dark-mode" type="bool" value="true"/>
+    <property name="panel-2" type="empty">
+      <property name="autohide-behavior" type="uint" value="1"/>
+      <property name="position" type="string" value="p=6;x=1720;y=16"/>
+      <property name="length" type="double" value="63.808139534883722"/>
+      <property name="position-locked" type="bool" value="true"/>
+      <property name="size" type="uint" value="30"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="4"/>
+        <value type="int" value="1"/>
+        <value type="int" value="21"/>
+        <value type="int" value="6"/>
+        <value type="int" value="2"/>
+        <value type="int" value="13"/>
+        <value type="int" value="7"/>
+        <value type="int" value="11"/>
+        <value type="int" value="12"/>
+        <value type="int" value="14"/>
+        <value type="int" value="15"/>
+        <value type="int" value="5"/>
+        <value type="int" value="10"/>
+        <value type="int" value="9"/>
+        <value type="int" value="8"/>
+        <value type="int" value="34"/>
+      </property>
+      <property name="background-style" type="uint" value="0"/>
+      <property name="background-rgba" type="array">
+        <value type="double" value="0.66000000000000003"/>
+        <value type="double" value="0.26840000000000008"/>
+        <value type="double" value="0.26840000000000008"/>
+        <value type="double" value="0"/>
+      </property>
+      <property name="enter-opacity" type="uint" value="80"/>
+      <property name="leave-opacity" type="uint" value="80"/>
+      <property name="mode" type="uint" value="0"/>
+      <property name="icon-size" type="uint" value="0"/>
+      <property name="enable-struts" type="bool" value="true"/>
+      <property name="length-adjust" type="bool" value="true"/>
+    </property>
+  </property>
+  <property name="plugins" type="empty">
+    <property name="plugin-21" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-34" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-1" type="string" value="whiskermenu">
+      <property name="button-icon" type="string" value="emblem-debian-white"/>
+      <property name="default-category" type="int" value="1"/>
+      <property name="favorites-in-recent" type="bool" value="true"/>
+      <property name="profile-shape" type="int" value="2"/>
+      <property name="menu-width" type="int" value="800"/>
+      <property name="show-command-shutdown" type="bool" value="true"/>
+      <property name="favorites" type="array">
+        <value type="string" value="xfce4-web-browser.desktop"/>
+        <value type="string" value="xfce4-mail-reader.desktop"/>
+        <value type="string" value="xfce4-file-manager.desktop"/>
+        <value type="string" value="xfce4-terminal-emulator.desktop"/>
+      </property>
+      <property name="recent" type="array">
+        <value type="string" value="org.zotero.Zotero.desktop"/>
+        <value type="string" value="thunar-settings.desktop"/>
+        <value type="string" value="xfce4-notifyd-config.desktop"/>
+        <value type="string" value="xfce-settings-manager.desktop"/>
+        <value type="string" value="xfce4-screenshooter.desktop"/>
+        <value type="string" value="xfce-wm-settings.desktop"/>
+        <value type="string" value="timeshift-gtk.desktop"/>
+        <value type="string" value="xfce4-file-manager.desktop"/>
+        <value type="string" value="org.gnome.baobab.desktop"/>
+        <value type="string" value="xfce4-mime-settings.desktop"/>
+      </property>
+      <property name="menu-height" type="int" value="600"/>
+      <property name="hover-switch-category" type="bool" value="true"/>
+      <property name="menu-opacity" type="int" value="100"/>
+      <property name="launcher-show-tooltip" type="bool" value="false"/>
+      <property name="launcher-show-description" type="bool" value="false"/>
+      <property name="category-show-name" type="bool" value="true"/>
+    </property>
+    <property name="plugin-5" type="string" value="pulseaudio">
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value="brave.instance2"/>
+      <property name="known-players" type="string" value="Brave"/>
+    </property>
+    <property name="plugin-6" type="string" value="tasklist">
+      <property name="show-labels" type="bool" value="false"/>
+      <property name="show-handle" type="bool" value="false"/>
+      <property name="show-tooltips" type="bool" value="true"/>
+      <property name="middle-click" type="uint" value="2"/>
+      <property name="flat-buttons" type="bool" value="true"/>
+      <property name="include-all-workspaces" type="bool" value="false"/>
+    </property>
+    <property name="plugin-4" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-7" type="string" value="separator">
+      <property name="expand" type="bool" value="true"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-8" type="string" value="clock">
+      <property name="mode" type="uint" value="2"/>
+      <property name="flash-separators" type="bool" value="false"/>
+      <property name="digital-layout" type="uint" value="3"/>
+      <property name="digital-time-font" type="string" value="Avenir Next LT Pro Bold 11"/>
+    </property>
+    <property name="plugin-9" type="string" value="clock">
+      <property name="digital-layout" type="uint" value="2"/>
+      <property name="digital-date-format" type="string" value="%d %b"/>
+      <property name="digital-date-font" type="string" value="Avenir Next LT Pro Bold 11"/>
+      <property name="mode" type="uint" value="2"/>
+    </property>
+    <property name="plugin-10" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-14" type="string" value="systray">
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="blueman"/>
+        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (66%)"/>
+        <value type="string" value="no network connection"/>
+        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (65%)"/>
+        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (63%)"/>
+        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (60%)"/>
+        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (61%)"/>
+        <value type="string" value="ulauncher"/>
+        <value type="string" value="syncthing"/>
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="syncthing-gtk"/>
+        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (62%)"/>
+      </property>
+      <property name="known-items" type="array">
+        <value type="string" value="syncthing-gtk"/>
+        <value type="string" value="blueman"/>
+        <value type="string" value="ulauncher"/>
+      </property>
+      <property name="single-row" type="bool" value="true"/>
+      <property name="icon-size" type="int" value="22"/>
+    </property>
+    <property name="plugin-15" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-11" type="string" value="xfce4-sensors-plugin"/>
+    <property name="plugin-12" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-13" type="string" value="i3-workspaces"/>
+    <property name="plugin-2" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+      <property name="expand" type="bool" value="true"/>
+    </property>
+  </property>
+</channel>

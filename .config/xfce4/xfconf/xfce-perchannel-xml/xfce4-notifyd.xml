@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<channel name="xfce4-notifyd" version="1.0">
+  <property name="applications" type="empty">
+    <property name="known_applications" type="array">
+      <value type="string" value="blueman"/>
+      <value type="string" value="espanso"/>
+      <value type="string" value="me.kozec.syncthingtk"/>
+      <value type="string" value="org.freedesktop.network-manager-applet"/>
+      <value type="string" value="org.gnome.Software"/>
+      <value type="string" value="Thunderbird"/>
+      <value type="string" value="ulauncher-clipboard-extension"/>
+      <value type="string" value="Xfce volume control"/>
+      <value type="string" value="xfce4-settings-helper"/>
+    </property>
+  </property>
+  <property name="log-max-size-enabled" type="bool" value="true"/>
+  <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
+  <property name="do-slideout" type="bool" value="false"/>
+  <property name="do-fadeout" type="bool" value="true"/>
+</channel>

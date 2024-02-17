@@ -97,6 +97,8 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
+alias config='/usr/bin/git --git-dir=/home/lkslba/.dotfiles/ --work-tree=/home/lkslba'
+
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
@@ -121,6 +123,8 @@ export PATH="$HOME/.config/emacs/bin:$PATH"
 #add exa to path:
 PATH="$HOME/.cargo/bin${PATH:+:${PATH}}"
 
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
+
 #add tex to path:
 export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
 export MANPATH="/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH"
@@ -129,7 +133,4 @@ export INFOPATH="/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH"
 
 #Neofetch
 neofetch
-
-
-
-alias config='/usr/bin/git --git-dir=/home/lkslba/.dotfiles/ --work-tree=/home/lkslba'
+eval "$(starship init bash)"
