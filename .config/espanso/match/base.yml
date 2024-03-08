@@ -46,6 +46,30 @@ matches:
   - trigger: ":gt"
     replace: ">"
 
+  - trigger: ":keymap"
+    replace: "xmodmap /home/lkslba/.xmodmap-luk-nuc"
+
+  - trigger: ":tilde"
+    replace: "~"
+
+  - trigger: ":backslash"
+    replace: "\ "
+
+  - trigger: ":openbraces"
+    replace: "{"
+
+  - trigger: ":closebraces"
+    replace: "}"
+
+  - trigger: ":openbracket"
+    replace: "["
+
+  - trigger: ":closedbracket"
+    replace: "]"
+
+  - trigger: ":circumflex"
+    replace: "^"
+
   - trigger: ":latexheader"
     replace: |
               #+AUTHOR: Lukas Leuba

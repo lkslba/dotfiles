@@ -128,6 +128,25 @@ cua-mode 1
 ;;
 ;; Org-Mode:
 (after! org
+  (defun my/find-or-create-uni-week ()
+  ;; Define the week string.
+  (let ((week-str (format-time-string "Week %V")))
+    ;; Go to the beginning of the buffer.
+    (goto-char (point-min))
+    ;; Search for the "Uni" heading.
+    (unless (re-search-forward "^\\* Uni" nil t)
+      ;; If "Uni" is not found, insert it at the end of the buffer.
+      (goto-char (point-max))
+      (insert "* Uni\n"))
+    ;; Check for correct level of stars for "Week X" heading under "Uni"
+    (unless (re-search-forward (format "^\\*\\* %s" week-str) nil t)
+      ;; If the current week is not found, insert it at correct level.
+      (goto-char (org-find-exact-headline-in-buffer "Uni"))
+      (org-end-of-subtree)
+      (insert "\n** " week-str "\n"))
+    ;; Ensure that we are at the end of the "Week X" subtree to insert the new TODO.
+    (goto-char (org-find-exact-headline-in-buffer week-str))))
+
   :config
   (setq org-directory "~/org/"
         org-cite-global-bibliography (list "~/org/config/bibliography.bib")
@@ -156,7 +175,12 @@ cua-mode 1
                                 ("t" "Journal ToDo" entry
                                 (file+datetree  "~/org/org-agenda/journal.org")
                                 "* %<%H:%M> Daily Todo's\n** TODO %?\nSCHEDULED: %<%Y-%m-%d %a>"
-                                :jump-to-captured t))
+                                :jump-to-captured t)
+                                ("u" "Uni ToDo" entry
+                                (file+function  "~/org/org-agenda/todo.org" my/find-or-create-uni-week)
+                                "* TODO %?\n"
+                                :jump-to-captured t
+                                :immediate-finish t))
         )
 
 ;; Org-Roam:

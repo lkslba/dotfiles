@@ -50,7 +50,7 @@ exec --no-startup-id /usr/bin/syncthing-gtk
 
 
 # Keybind Change:
-exec --no-startup-id sh -c "sleep 10; xmodmap /home/yourusername/.xmodmap-luk-nuc"
+exec --no-startup-id sh -c "sleep 10; xmodmap /home/lkslba/.xmodmap-luk-nuc"
 
 #exec --no-startup-id lxpolkit
 

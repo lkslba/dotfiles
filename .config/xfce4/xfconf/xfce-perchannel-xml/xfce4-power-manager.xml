@@ -4,5 +4,8 @@
   <property name="xfce4-power-manager" type="empty">
     <property name="power-button-action" type="empty"/>
     <property name="show-tray-icon" type="bool" value="false"/>
+    <property name="sleep-button-action" type="uint" value="1"/>
+    <property name="general-notification" type="bool" value="false"/>
+    <property name="inactivity-on-ac" type="uint" value="14"/>
   </property>
 </channel>
