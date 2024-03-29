@@ -96,7 +96,7 @@ alias l='ls -CF'
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # Alias definitions.
-alias config='/usr/bin/git --git-dir=/home/lkslba/.dotfiles/ --work-tree=/home/lkslba'
+alias config='/usr/bin/git --git-dir=/home/lkslba/.cfg/ --work-tree=/home/lkslba'
 
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.

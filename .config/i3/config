@@ -9,7 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod4
+set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -42,15 +42,16 @@ exec --no-startup-id nm-applet
 exec_always --no-startup-id sh -c "sleep 1; nitrogen --restore"
 
 # Startup Applications:
-exec --no-startup-id env GDK_BACKEND=x11 /usr/bin/ulauncher --hide-window --hide-window
-exec --no-startup-id xfce4-taskmanager
-exec --no-startup-id flatpak run org.keepassxc.KeePassXC
-exec --no-startup-id flatpak run org.zotero.Zotero
-exec --no-startup-id /usr/bin/syncthing-gtk
+#exec --no-startup-id env GDK_BACKEND=x11 /usr/bin/ulauncher --hide-window --hide-window
+#exec --no-startup-id xfce4-taskmanager
+#exec --no-startup-id flatpak run org.keepassxc.KeePassXC
+#exec --no-startup-id flatpak run org.zotero.Zotero
+#exec --no-startup-id /usr/bin/syncthing-gtk
+
 
 
 # Keybind Change:
-exec --no-startup-id sh -c "sleep 10; xmodmap /home/lkslba/.xmodmap-luk-nuc"
+#exec --no-startup-id sh -c "sleep 10; xmodmap /home/lkslba/.xmodmap-luk-nuc"
 
 #exec --no-startup-id lxpolkit
 
@@ -76,7 +77,7 @@ bindsym $mod+f exec thunar
 bindsym $mod+q kill
 
 # start rofi (a program launcher)
-# bindsym $mod+d exec rofi -show drun
+bindsym $mod+space exec rofi -show drun
 # bindsym $mod+Shift+f exec rofi -show filebrowser
 # bindsym $mod+w exec rofi -show window
 #bindsym $mod+p exec rofi -show power-menu -modi power-menu:rofi-power-menu
@@ -130,7 +131,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+#bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -163,11 +164,11 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-bindsym $mod+Mod1+Right workspace next
-bindsym $mod+Mod1+Left workspace prev
+bindsym $mod+Mod4+Right workspace next
+bindsym $mod+Mod4+Left workspace prev
 
-bindsym Shift+Mod1+Right move container to workspace next
-bindsym Shift+Mod1+Left move container to workspace prev
+bindsym Shift+mod+Right move container to workspace next
+bindsym Shift+mod+Left move container to workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -251,5 +252,5 @@ hide_edge_borders both
 
 default_border pixel 0
 
-gaps inner 10
-gaps outer 8
+gaps inner 5
+gaps outer 5

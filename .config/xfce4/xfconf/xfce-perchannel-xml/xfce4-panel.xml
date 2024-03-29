@@ -3,199 +3,153 @@
 <channel name="xfce4-panel" version="1.0">
   <property name="configver" type="int" value="2"/>
   <property name="panels" type="array">
-    <value type="int" value="2"/>
-    <property name="dark-mode" type="bool" value="true"/>
-    <property name="panel-2" type="empty">
-      <property name="autohide-behavior" type="uint" value="1"/>
-      <property name="position" type="string" value="p=6;x=1720;y=16"/>
-      <property name="length" type="double" value="63.808139534883722"/>
+    <value type="int" value="1"/>
+    <property name="panel-1" type="empty">
+      <property name="position" type="string" value="p=6;x=0;y=0"/>
+      <property name="length" type="double" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
-      <property name="size" type="uint" value="30"/>
-      <property name="plugin-ids" type="array">
-        <value type="int" value="4"/>
-        <value type="int" value="1"/>
-        <value type="int" value="21"/>
-        <value type="int" value="6"/>
-        <value type="int" value="2"/>
-        <value type="int" value="13"/>
-        <value type="int" value="7"/>
-        <value type="int" value="11"/>
-        <value type="int" value="16"/>
-        <value type="int" value="3"/>
-        <value type="int" value="12"/>
-        <value type="int" value="14"/>
-        <value type="int" value="15"/>
-        <value type="int" value="5"/>
-        <value type="int" value="10"/>
-        <value type="int" value="9"/>
-        <value type="int" value="8"/>
-        <value type="int" value="34"/>
-        <value type="int" value="17"/>
-      </property>
-      <property name="background-style" type="uint" value="0"/>
-      <property name="background-rgba" type="array">
-        <value type="double" value="0.66000000000000003"/>
-        <value type="double" value="0.26840000000000008"/>
-        <value type="double" value="0.26840000000000008"/>
-        <value type="double" value="0"/>
-      </property>
+      <property name="size" type="uint" value="23"/>
+      <property name="background-style" type="empty"/>
+      <property name="background-alpha" type="empty"/>
       <property name="enter-opacity" type="uint" value="80"/>
       <property name="leave-opacity" type="uint" value="80"/>
-      <property name="mode" type="uint" value="0"/>
+      <property name="plugin-ids" type="array">
+        <value type="int" value="4"/>
+        <value type="int" value="2"/>
+        <value type="int" value="3"/>
+        <value type="int" value="7"/>
+        <value type="int" value="1"/>
+        <value type="int" value="5"/>
+        <value type="int" value="16"/>
+        <value type="int" value="6"/>
+        <value type="int" value="8"/>
+        <value type="int" value="9"/>
+        <value type="int" value="10"/>
+        <value type="int" value="11"/>
+        <value type="int" value="12"/>
+        <value type="int" value="14"/>
+        <value type="int" value="13"/>
+      </property>
       <property name="icon-size" type="uint" value="0"/>
-      <property name="enable-struts" type="bool" value="true"/>
-      <property name="length-adjust" type="bool" value="true"/>
+      <property name="autohide-behavior" type="uint" value="1"/>
     </property>
+    <property name="dark-mode" type="bool" value="true"/>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-21" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-34" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-1" type="string" value="whiskermenu">
-      <property name="button-icon" type="string" value="emblem-debian-white"/>
-      <property name="default-category" type="int" value="1"/>
-      <property name="favorites-in-recent" type="bool" value="true"/>
-      <property name="profile-shape" type="int" value="2"/>
-      <property name="menu-width" type="int" value="800"/>
-      <property name="show-command-shutdown" type="bool" value="true"/>
-      <property name="favorites" type="array">
-        <value type="string" value="xfce4-web-browser.desktop"/>
-        <value type="string" value="xfce4-mail-reader.desktop"/>
-        <value type="string" value="xfce4-file-manager.desktop"/>
-        <value type="string" value="xfce4-terminal-emulator.desktop"/>
-      </property>
-      <property name="recent" type="array">
-        <value type="string" value="xfce-settings-manager.desktop"/>
-        <value type="string" value="jetbrains-toolbox.desktop"/>
-        <value type="string" value="ulauncher.desktop"/>
-        <value type="string" value="vlc.desktop"/>
-        <value type="string" value="brave-browser.desktop"/>
-        <value type="string" value="timeshift-gtk.desktop"/>
-        <value type="string" value="org.zotero.Zotero.desktop"/>
-        <value type="string" value="thunar-settings.desktop"/>
-        <value type="string" value="xfce4-notifyd-config.desktop"/>
-        <value type="string" value="xfce4-screenshooter.desktop"/>
-      </property>
-      <property name="menu-height" type="int" value="600"/>
-      <property name="hover-switch-category" type="bool" value="true"/>
-      <property name="menu-opacity" type="int" value="100"/>
-      <property name="launcher-show-tooltip" type="bool" value="false"/>
-      <property name="launcher-show-description" type="bool" value="false"/>
-      <property name="category-show-name" type="bool" value="true"/>
-    </property>
-    <property name="plugin-5" type="string" value="pulseaudio">
-      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="brave.instance2"/>
-      <property name="known-players" type="string" value="Brave;Chromium;floorp;vlc"/>
-    </property>
-    <property name="plugin-6" type="string" value="tasklist">
-      <property name="show-labels" type="bool" value="false"/>
-      <property name="show-handle" type="bool" value="false"/>
-      <property name="show-tooltips" type="bool" value="true"/>
-      <property name="middle-click" type="uint" value="2"/>
-      <property name="flat-buttons" type="bool" value="true"/>
-      <property name="include-all-workspaces" type="bool" value="false"/>
-    </property>
-    <property name="plugin-4" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-7" type="string" value="separator">
+    <property name="plugin-1" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-8" type="string" value="clock">
-      <property name="mode" type="uint" value="2"/>
-      <property name="flash-separators" type="bool" value="false"/>
-      <property name="digital-layout" type="uint" value="3"/>
-      <property name="digital-time-font" type="string" value="Avenir Next LT Pro 12"/>
+    <property name="plugin-2" type="string" value="tasklist">
+      <property name="grouping" type="uint" value="1"/>
+      <property name="flat-buttons" type="bool" value="true"/>
+      <property name="show-handle" type="bool" value="false"/>
+      <property name="show-tooltips" type="bool" value="false"/>
+      <property name="show-labels" type="bool" value="false"/>
     </property>
-    <property name="plugin-9" type="string" value="clock">
-      <property name="digital-layout" type="uint" value="2"/>
-      <property name="digital-date-format" type="string" value="%d %b"/>
-      <property name="digital-date-font" type="string" value="Avenir Next LT Pro 12"/>
-      <property name="mode" type="uint" value="2"/>
-    </property>
-    <property name="plugin-10" type="string" value="separator">
+    <property name="plugin-3" type="string" value="separator">
+      <property name="items" type="array">
+        <value type="string" value="17113679741.desktop"/>
+      </property>
+      <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
-    <property name="plugin-14" type="string" value="systray">
+    <property name="plugin-4" type="string" value="whiskermenu">
+      <property name="items" type="empty"/>
+    </property>
+    <property name="plugin-5" type="string" value="separator">
+      <property name="items" type="array">
+        <value type="string" value="17113679743.desktop"/>
+      </property>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-6" type="string" value="systray">
+      <property name="show-handle" type="empty"/>
+      <property name="middle-click" type="empty"/>
+      <property name="square-icons" type="bool" value="true"/>
       <property name="known-legacy-items" type="array">
-        <value type="string" value="blueman-tray"/>
-        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (72%)"/>
-        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (73%)"/>
-        <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="blueman"/>
-        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (66%)"/>
-        <value type="string" value="no network connection"/>
-        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (65%)"/>
-        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (63%)"/>
-        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (60%)"/>
-        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (61%)"/>
-        <value type="string" value="ulauncher"/>
         <value type="string" value="syncthing"/>
-        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="blueman-tray"/>
         <value type="string" value="syncthing-gtk"/>
-        <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (62%)"/>
+        <value type="string" value="mintupdate.py"/>
+        <value type="string" value="tray.py"/>
+        <value type="string" value="networkmanager applet"/>
       </property>
       <property name="known-items" type="array">
-        <value type="string" value="chrome_status_icon_1"/>
-        <value type="string" value="BitBoxApp"/>
-        <value type="string" value="vlc"/>
-        <value type="string" value="toolbox"/>
         <value type="string" value="syncthing-gtk"/>
         <value type="string" value="blueman"/>
-        <value type="string" value="ulauncher"/>
       </property>
+      <property name="icon-size" type="int" value="0"/>
+      <property name="hide-new-items" type="bool" value="true"/>
       <property name="single-row" type="bool" value="true"/>
-      <property name="icon-size" type="int" value="22"/>
-    </property>
-    <property name="plugin-15" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-11" type="string" value="xfce4-sensors-plugin"/>
-    <property name="plugin-12" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-13" type="string" value="i3-workspaces"/>
-    <property name="plugin-2" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-      <property name="expand" type="bool" value="true"/>
-    </property>
-    <property name="plugin-3" type="string" value="systemload">
-      <property name="network" type="empty">
-        <property name="enabled" type="bool" value="false"/>
+      <property name="hidden-items" type="array">
+        <value type="string" value="syncthing-gtk"/>
+        <value type="string" value="blueman"/>
       </property>
-      <property name="swap" type="empty">
+      <property name="hidden-legacy-items" type="array">
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="blueman-tray"/>
+        <value type="string" value="syncthing-gtk"/>
+        <value type="string" value="blueman"/>
+        <value type="string" value="tray.py"/>
+        <value type="string" value="syncthing"/>
+        <value type="string" value="mintupdate.py"/>
+      </property>
+    </property>
+    <property name="plugin-7" type="string" value="i3-workspaces">
+      <property name="expand" type="empty"/>
+      <property name="style" type="empty"/>
+    </property>
+    <property name="plugin-8" type="string" value="pulseaudio">
+      <property name="names-visible" type="empty"/>
+      <property name="show-frame" type="empty"/>
+      <property name="known-items" type="array">
+        <value type="string" value="blueman"/>
+      </property>
+      <property name="known-legacy-items" type="array">
+        <value type="string" value="networkmanager applet"/>
+        <value type="string" value="xfce4-power-manager"/>
+      </property>
+      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
+      <property name="show-notifications" type="bool" value="true"/>
+      <property name="mpris-players" type="string" value="brave.instance8819"/>
+    </property>
+    <property name="plugin-9" type="string" value="power-manager-plugin"/>
+    <property name="plugin-10" type="string" value="notification-plugin"/>
+    <property name="plugin-11" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-12" type="string" value="clock">
+      <property name="enable-keyboard-shortcuts" type="empty"/>
+      <property name="enable-mpris" type="empty"/>
+      <property name="mixer-command" type="empty"/>
+      <property name="show-notifications" type="empty"/>
+      <property name="mpris-players" type="string" value="brave.instance45527"/>
+      <property name="mode" type="uint" value="2"/>
+      <property name="tooltip-format" type="string" value="%x"/>
+      <property name="digital-date-format" type="string" value="%d %b %Y"/>
+      <property name="digital-layout" type="uint" value="2"/>
+      <property name="digital-date-font" type="string" value="Sans 10"/>
+    </property>
+    <property name="plugin-13" type="string" value="separator">
+      <property name="digital-time-format" type="empty"/>
+      <property name="digital-layout" type="empty"/>
+      <property name="digital-date-font" type="empty"/>
+      <property name="digital-time-font" type="empty"/>
+      <property name="style" type="uint" value="0"/>
+    </property>
+    <property name="plugin-14" type="string" value="clock">
+      <property name="digital-layout" type="uint" value="3"/>
+      <property name="digital-time-font" type="string" value="Sans 10"/>
+    </property>
+    <property name="plugin-16" type="string" value="systemload">
+      <property name="network" type="empty">
         <property name="enabled" type="bool" value="false"/>
       </property>
       <property name="uptime" type="empty">
         <property name="enabled" type="bool" value="false"/>
       </property>
-      <property name="cpu" type="empty">
-        <property name="color" type="array">
-          <value type="double" value="0.10196078431372549"/>
-          <value type="double" value="0.37254901960784315"/>
-          <value type="double" value="0.70588235294117652"/>
-          <value type="double" value="1"/>
-        </property>
-      </property>
-      <property name="memory" type="empty">
-        <property name="color" type="array">
-          <value type="double" value="0.56862745098039214"/>
-          <value type="double" value="0.25490196078431371"/>
-          <value type="double" value="0.67450980392156867"/>
-          <value type="double" value="1"/>
-        </property>
-      </property>
-    </property>
-    <property name="plugin-16" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
-    </property>
-    <property name="plugin-17" type="string" value="separator">
-      <property name="style" type="uint" value="0"/>
     </property>
   </property>
 </channel>

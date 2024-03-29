@@ -1,21 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <channel name="xfce4-notifyd" version="1.0">
+  <property name="notify-location" type="empty"/>
+  <property name="theme" type="empty"/>
+  <property name="initial-opacity" type="empty"/>
+  <property name="expire-timeout" type="empty"/>
+  <property name="primary-monitor" type="empty"/>
+  <property name="do-fadeout" type="empty"/>
   <property name="applications" type="empty">
     <property name="known_applications" type="array">
       <value type="string" value="blueman"/>
-      <value type="string" value="espanso"/>
-      <value type="string" value="me.kozec.syncthingtk"/>
-      <value type="string" value="org.freedesktop.network-manager-applet"/>
-      <value type="string" value="org.gnome.Software"/>
-      <value type="string" value="Thunderbird"/>
-      <value type="string" value="ulauncher-clipboard-extension"/>
-      <value type="string" value="Xfce volume control"/>
-      <value type="string" value="xfce4-settings-helper"/>
+      <value type="string" value="nm-applet"/>
+      <value type="string" value="xfce4-power-manager"/>
     </property>
   </property>
-  <property name="log-max-size-enabled" type="bool" value="true"/>
-  <property name="date-time-custom-format" type="string" value="%a %H:%M:%S"/>
-  <property name="do-slideout" type="bool" value="false"/>
-  <property name="do-fadeout" type="bool" value="true"/>
 </channel>

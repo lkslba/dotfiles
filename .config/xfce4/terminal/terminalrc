@@ -1,4 +1,10 @@
 [Configuration]
+BackgroundMode=TERMINAL_BACKGROUND_TRANSPARENT
+BackgroundDarkness=1.000000
+ColorBackground=#3c953c953c95
+ColorCursor=#867f81c281c2
+ColorPalette=#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec
+FontName=Monospace 10
 MiscAlwaysShowTabs=FALSE
 MiscBell=FALSE
 MiscBellUrgent=FALSE
@@ -27,12 +33,4 @@ MiscNewTabAdjacent=FALSE
 MiscSearchDialogOpacity=100
 MiscShowUnsafePasteDialog=FALSE
 MiscRightClickAction=TERMINAL_RIGHT_CLICK_ACTION_CONTEXT_MENU
-ScrollingBar=TERMINAL_SCROLLBAR_NONE
-FontName=JetBrains Mono NL 12
-DropdownHeight=60
-DropdownWidth=90
-ColorForeground=#F8F8F2
-ColorBackground=#282A36
-ColorCursor=#F8F8F2
-ColorPalette=#21222C;#FF5555;#50FA7B;#F1FA8C;#BD93F9;#FF79C6;#8BE9FD;#F8F8F2;#6272A4;#FF6E6E;#69FF94;#FFFFA5;#D6ACFF;#FF92DF;#A4FFFF;#FFFFFF
 

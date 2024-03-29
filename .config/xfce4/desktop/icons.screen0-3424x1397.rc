@@ -1,23 +1,15 @@
 [xfdesktop-version-4.10.3+-rcfile_format]
 4.10.3+=true
 
-[9b662aae-69c9-4ea5-b3d7-3705668c2690]
+[Trash]
 row=0
 col=0
 
-[1463-D018]
-row=4
-col=0
-
-[Wastebasket]
+[/]
 row=1
 col=0
 
-[/]
-row=2
-col=0
-
 [/home/lkslba]
-row=3
+row=2
 col=0
 
