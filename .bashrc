@@ -130,9 +130,9 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export PATH=~/.npm-global/bin:$PATH
 
 #add tex to path:
-export PATH="/usr/local/texlive/2023/bin/x86_64-linux:$PATH"
-export MANPATH="/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH"
-export INFOPATH="/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH"
+export PATH="$HOME/texlive/2024/bin/x86_64-linux:$PATH"
+export MANPATH="$HOME/texlive/2024/texmf-dist/doc/man:$MANPATH"
+export INFOPATH="$HOME/texlive/2024/texmf-dist/doc/info:$INFOPATH"
 
 #Neofetch
 neofetch

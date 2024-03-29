@@ -107,6 +107,9 @@ cua-mode 1
   :custom
   (citar-bibliography '("~/org/config/bibliography.bib")))
 
+(setenv "PATH" (concat "/home/lkslba/texlive/2024/bin/x86_64-linux:" (getenv "PATH")))
+(setq exec-path (append '("/home/lkslba/texlive/2023/bin/x86_64-linux") exec-path))
+
 ;; LaTeX export:
 (with-eval-after-load 'ox-latex
   (setq org-latex-src-block-backend 'listings)

@@ -123,6 +123,7 @@
     </property>
     <property name="plugin-14" type="string" value="systray">
       <property name="known-legacy-items" type="array">
+        <value type="string" value="system-config-printer"/>
         <value type="string" value="blueman-tray"/>
         <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (72%)"/>
         <value type="string" value="wi-fi network connection “jnq-35559” active: jnq-35559 (73%)"/>
