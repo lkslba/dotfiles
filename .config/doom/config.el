@@ -107,8 +107,12 @@ cua-mode 1
   :custom
   (citar-bibliography '("~/org/config/bibliography.bib")))
 
+;; Set the PATH environment variable
 (setenv "PATH" (concat "/home/lkslba/texlive/2024/bin/x86_64-linux:" (getenv "PATH")))
-(setq exec-path (append '("/home/lkslba/texlive/2023/bin/x86_64-linux") exec-path))
+
+;; Add to the exec-path variable
+(setq exec-path (append '("/home/lkslba/texlive/2024/bin/x86_64-linux") exec-path))
+
 
 ;; LaTeX export:
 (with-eval-after-load 'ox-latex
