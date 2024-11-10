@@ -43,7 +43,7 @@ exec_always --no-startup-id sh -c "sleep 1; nitrogen --restore"
 
 # Startup Applications:
 #exec --no-startup-id env GDK_BACKEND=x11 /usr/bin/ulauncher --hide-window --hide-window
-#exec --no-startup-id xfce4-taskmanager
+exec --no-startup-id xfce4-taskmanager
 #exec --no-startup-id flatpak run org.keepassxc.KeePassXC
 #exec --no-startup-id flatpak run org.zotero.Zotero
 #exec --no-startup-id /usr/bin/syncthing-gtk
@@ -149,8 +149,8 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
-set $ws9 "9"
-set $ws10 ""
+set $ws9 ""
+set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -182,10 +182,10 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-assign [class="Syncthing GTK"] $ws10
-assign [class="Xfce4-taskmanager"] $ws10
-assign [class="KeePassXC"] $ws10
-assign [class="Zotero"] $ws10
+assign [class="Syncthing GTK"] $ws9
+assign [class="Xfce4-taskmanager"] $ws9
+assign [class="KeePassXC"] $ws9
+assign [class="Zotero"] $ws9
 
 # reload the configuration file
 bindsym $mod+Shift+c reload

@@ -34,6 +34,8 @@
     </property>
     <property name="custom" type="empty">
       <property name="override" type="bool" value="true"/>
+      <property name="&lt;Shift&gt;&lt;Super&gt;s" type="string" value="xfce4-screenshooter -rc
+"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

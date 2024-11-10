@@ -5,6 +5,6 @@
   <property name="window-height" type="int" value="721"/>
   <property name="columns" type="empty">
     <property name="sort-type" type="uint" value="1"/>
-    <property name="sort-id" type="uint" value="5"/>
+    <property name="sort-id" type="uint" value="7"/>
   </property>
 </channel>

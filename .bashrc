@@ -135,7 +135,7 @@ export MANPATH="/usr/local/texlive/2023/texmf-dist/doc/man:$MANPATH"
 export INFOPATH="/usr/local/texlive/2023/texmf-dist/doc/info:$INFOPATH"
 
 #Neofetch
-neofetch
+#neofetch
 eval "$(starship init bash)"
 
 export NVM_DIR="$HOME/.nvm"
@@ -145,3 +145,7 @@ export NVM_DIR="$HOME/.nvm"
 #Zoxide
 eval "$(zoxide init bash)"
 alias cd='z'
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

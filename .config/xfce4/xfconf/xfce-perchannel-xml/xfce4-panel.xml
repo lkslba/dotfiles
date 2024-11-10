@@ -14,6 +14,7 @@
       <property name="enter-opacity" type="uint" value="80"/>
       <property name="leave-opacity" type="uint" value="80"/>
       <property name="plugin-ids" type="array">
+        <value type="int" value="15"/>
         <value type="int" value="4"/>
         <value type="int" value="2"/>
         <value type="int" value="3"/>
@@ -77,6 +78,7 @@
         <value type="string" value="networkmanager applet"/>
       </property>
       <property name="known-items" type="array">
+        <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="syncthing-gtk"/>
         <value type="string" value="blueman"/>
       </property>
@@ -84,6 +86,7 @@
       <property name="hide-new-items" type="bool" value="true"/>
       <property name="single-row" type="bool" value="true"/>
       <property name="hidden-items" type="array">
+        <value type="string" value="chrome_status_icon_1"/>
         <value type="string" value="syncthing-gtk"/>
         <value type="string" value="blueman"/>
       </property>
@@ -113,7 +116,7 @@
       </property>
       <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
       <property name="show-notifications" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="brave.instance8819"/>
+      <property name="mpris-players" type="string" value="brave.instance11440;brave.instance39923;brave.instance4018;brave.instance4083;brave.instance8819"/>
     </property>
     <property name="plugin-9" type="string" value="power-manager-plugin"/>
     <property name="plugin-10" type="string" value="notification-plugin"/>
@@ -150,6 +153,9 @@
       <property name="uptime" type="empty">
         <property name="enabled" type="bool" value="false"/>
       </property>
+    </property>
+    <property name="plugin-15" type="string" value="separator">
+      <property name="style" type="uint" value="0"/>
     </property>
   </property>
 </channel>

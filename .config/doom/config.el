@@ -21,9 +21,9 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "Jetbrains Mono" :size 14)
-      doom-variable-pitch-font (font-spec :family "Avenir Next LT Pro Regular" :size 16)
-      doom-big-font (font-spec :family "Jetbrains Mono" :size 25))
+(setq doom-font (font-spec :family "JetbrainsMono Nerd Font" :size 14)
+      doom-variable-pitch-font (font-spec :family "Iosevka Nerd Font" :size 16)
+      doom-big-font (font-spec :family "JetbrainsMono Nerd Font" :size 25))
 
 ;; Set reusable font name variables
 ;;(defvar my/fixed-width-font "Monospace Regular"
@@ -474,14 +474,31 @@ cua-mode 1
         magit-revision-show-gravatars nil)
         (setq magit-refresh-status-buffer t))
 
-(after! centaur-tabs
-  (centaur-tabs-mode +1)
+(use-package centaur-tabs
+  :demand
+  :config
   (setq centaur-tabs-set-icons t
         centaur-tabs-gray-out-icons 'buffer
         centaur-tabs-height 32
         centaur-tabs-set-bar 'under
         x-underline-at-descent-line t
-        centaur-tabs-set-modified-marker t))
+        centaur-tabs-set-modified-marker t)
+  ;; Disable centaur-tabs by default
+  (centaur-tabs-mode -1))
+
+(defun my/enable-centaur-tabs-on-lsp ()
+  "Enable centaur-tabs-mode when LSP is active."
+  (when (lsp-workspaces)  ; Checks if there's at least one active LSP workspace
+    (centaur-tabs-mode +1)))
+
+(defun my/disable-centaur-tabs-on-lsp-shutdown ()
+  "Disable centaur-tabs-mode when all LSP sessions are shutdown."
+  (unless (lsp-workspaces)  ; No active LSP workspaces
+    (centaur-tabs-mode -1)))
+
+(add-hook 'lsp-mode-hook #'my/enable-centaur-tabs-on-lsp)
+(add-hook 'lsp-after-uninitialized-hook #'my/disable-centaur-tabs-on-lsp-shutdown)
+
 
 (after! web-mode
   (add-to-list 'auto-mode-alist '("\\.axaml\\'" . web-mode)))
