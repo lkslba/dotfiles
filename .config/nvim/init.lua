@@ -14,7 +14,10 @@ vim.opt.showmode = false -- Don't Show mode, since its already in statusline
 vim.opt.undofile = true -- save undo history
 vim.opt.updatetime = 250 -- decrease update time
 vim.opt.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
-
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.timeoutlen = 300 -- Decrease this value (default is 1000)
+vim.opt.ttimeoutlen = 10 -- Time in milliseconds to wait for a key code sequence to complete
 -- Basic styling settings
 vim.opt.termguicolors = true -- Enable 24-bit RGB color
 vim.opt.cursorline = true -- Highlight current line
@@ -83,8 +86,17 @@ vim.g.maplocalleader = " "
 
 -- Basic mappings
 vim.keymap.set("n", "<leader>fs", ":w<CR>", { desc = "Save file" })
-vim.keymap.set("n", "<leader>q", ":q<CR>", { desc = "Quit" })
-vim.keymap.set("n", "<leader>e", ":Lexplore<CR>", { desc = "Toggle file explorer" })
+vim.keymap.set("n", "<leader>Q", ":q<CR>", { desc = "Quit" })
+vim.keymap.set("n", "<leader>e", ":Neotree toggle<CR>", { desc = "Toggle file explorer" })
+
+vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer", silent = true })
+vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Prev buffer", silent = true })
+
+-- Close buffer without closing window
+vim.keymap.set("n", "<leader>bk", ":bdelete<CR>", { desc = "KILL buffer", silent = true })
+
+-- List all buffers and wait for selection
+vim.keymap.set("n", "<leader>bb", ":buffers<CR>:buffer<Space>", { desc = "List buffers and switch" })
 
 -- Split navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move to left split" })
@@ -230,33 +242,81 @@ require("lazy").setup({
 			tag = "0.1.5",
 			dependencies = {
 				"nvim-lua/plenary.nvim",
-				{ -- If encountering errors, see telescope-fzf-native README for installation instructions
+				{
 					"nvim-telescope/telescope-fzf-native.nvim",
-
-					-- `build` is used to run some command when the plugin is installed/updated.
-					-- This is only run then, not every time Neovim starts up.
 					build = "make",
-
-					-- `cond` is a condition used to determine whether this plugin should be
-					-- installed and loaded.
 					cond = function()
 						return vim.fn.executable("make") == 1
 					end,
 				},
 				{ "nvim-telescope/telescope-ui-select.nvim" },
-
-				-- Useful for getting pretty icons, but requires a Nerd Font.
 				{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 			},
 			config = function()
-				require("telescope").setup()
-				-- Add keymaps for Telescope
-				vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
-				vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
-				vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
+				local telescope = require("telescope")
+
+				telescope.setup({
+					defaults = {
+						path_display = { "truncate" },
+						sorting_strategy = "ascending",
+						layout_config = {
+							horizontal = {
+								prompt_position = "top",
+							},
+						},
+					},
+				})
+
+				-- Enable telescope fzf native
+				telescope.load_extension("fzf")
+
+				-- Files and text search
+				vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+				vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
+				vim.keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Find word under cursor" })
+
+				-- File browser
+				vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", { desc = "Browse files" })
+
+				-- Buffers, help, commands
+				vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+				vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help" })
+				vim.keymap.set("n", "<leader>fc", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
+
+				-- Search within config files
+				vim.keymap.set("n", "<leader>fn", function()
+					require("telescope.builtin").find_files({
+						prompt_title = "Config Files",
+						cwd = vim.fn.stdpath("config"),
+						hidden = true,
+					})
+				end, { desc = "Find neovim config files" })
+
+				-- Search in home directory
+				vim.keymap.set("n", "<leader>fH", function()
+					require("telescope.builtin").find_files({
+						prompt_title = "Home Files",
+						cwd = "~",
+						hidden = true,
+					})
+				end, { desc = "Find files in home dir" })
+
+				-- Recent files
+				vim.keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })
+
+				-- Search in current buffer
+				vim.keymap.set(
+					"n",
+					"<leader>/",
+					"<cmd>Telescope current_buffer_fuzzy_find<cr>",
+					{ desc = "Fuzzy search in current buffer" }
+				)
+
+				-- Git operations
+				vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>", { desc = "Search git commits" })
+				vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>", { desc = "Search git status" })
 			end,
 		},
-
 		-- Citation management
 		{
 			"nvim-telescope/telescope-bibtex.nvim",
@@ -405,22 +465,55 @@ require("lazy").setup({
 				vim.keymap.set("n", "<leader>F", function()
 					require("conform").format()
 				end, { desc = "Format file" })
+
+				-- Basic LSP keymaps
+				vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to declaration" })
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+				vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show hover information" })
+				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
+				vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show signature help" })
+				vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+				vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { desc = "Code actions" })
+				vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Show references" })
+
+				-- Diagnostic keymaps
+				vim.keymap.set(
+					"n",
+					"<leader>dd",
+					vim.diagnostic.open_float,
+					{ desc = "Show diagnostic error messages" }
+				)
+				vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+				vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
+				vim.keymap.set("n", "<leader>dq", vim.diagnostic.setloclist, { desc = "Open diagnostic quickfix list" })
+
+				-- Toggle diagnostic display
+				vim.keymap.set("n", "<leader>td", function()
+					if vim.diagnostic.is_disabled() then
+						vim.diagnostic.enable()
+						print("Diagnostics enabled")
+					else
+						vim.diagnostic.disable()
+						print("Diagnostics disabled")
+					end
+				end, { desc = "Toggle diagnostics" })
 			end,
 		},
 
-		-- Completion
+		-- completion
 		{
 			"hrsh7th/nvim-cmp",
 			dependencies = {
-				"hrsh7th/cmp-nvim-lsp", -- LSP completions
-				"hrsh7th/cmp-buffer", -- Buffer completions
-				"hrsh7th/cmp-path", -- Path completions
-				"L3MON4D3/LuaSnip", -- Snippet engine
-				"saadparwaiz1/cmp_luasnip", -- Snippet completions
+				"hrsh7th/cmp-nvim-lsp",
+				"hrsh7th/cmp-buffer",
+				"hrsh7th/cmp-path",
+				"hrsh7th/cmp-nvim-lua",
+				"L3MON4D3/LuaSnip",
+				"saadparwaiz1/cmp_luasnip",
 			},
 			config = function()
 				local cmp = require("cmp")
-				local luasnip = require("luasnip")
+				local luasnip = require("luasnip") -- Add this line to require luasnip properly
 
 				cmp.setup({
 					snippet = {
@@ -435,11 +528,15 @@ require("lazy").setup({
 						["<S-Tab>"] = cmp.mapping.select_prev_item(),
 					}),
 					sources = cmp.config.sources({
-						{ name = "nvim-lsp" },
-						{ name = "luasnip" },
-						{ name = "buffer" },
-						{ name = "path" },
+						{ name = "nvim_lsp", priority = 1000 },
+						{ name = "nvim_lua", priority = 750 },
+						{ name = "luasnip", priority = 500 },
+						{ name = "buffer", priority = 250 },
+						{ name = "path", priority = 250 },
 					}),
+					completion = {
+						completeopt = "menu,menuone,noinsert",
+					},
 				})
 			end,
 		},

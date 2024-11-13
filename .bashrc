@@ -64,6 +64,8 @@ paths=(
     "/home/linuxbrew/.linuxbrew/bin"
 )
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 for p in "${paths[@]}"; do
     if [ -d "$p" ]; then
         PATH="$p:$PATH"
@@ -76,12 +78,63 @@ if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 fi
 
+# Todo.txt configuration
+export TODO_DIR="$HOME/agenda/todo"
+export TODOTXT_CFG_FILE="$TODO_DIR/config"
+
 # ===== Aliases =====
 # Navigation
 alias ..='cd ..'
 alias ...='cd ../..'
 alias .3='cd ../../..'
 alias .4='cd ../../../..'
+
+# todo.sh
+alias t="todo-txt"
+alias tdue="t due"
+alias tweek="t due 7"
+alias tdueall="t due show"
+
+# Add a task due today
+function tt() {
+    t add "$1 due:$(date -d today +%Y-%m-%d)"
+}
+
+# Add a task due tomorrow
+function tduetom() {
+    t add "$1 due:$(date -d tomorrow +%Y-%m-%d)"
+}
+
+# Add a task due in N days
+function tdueplus() {
+    local days=$1
+    shift
+    t add "$* due:$(date -d "+$days days" +%Y-%m-%d)"
+}
+
+# Workout specific aliases
+alias twt="t workout template"
+alias tws="t workout stats"
+alias twh="t workout history"
+
+# Quick add function for workouts
+function twa() {
+    if [ $# -ne 4 ]; then
+        echo "Usage: twa \"Exercise Name\" sets reps weight"
+        echo "Example: twa \"Bench Press\" 5 5 60"
+        return 1
+    fi
+    t add "(B) 💪 $1 $2×$3×$4kg +workout @gym"
+}
+
+# Quick complete function
+function twc() {
+    if [ $# -ne 1 ]; then
+        echo "Usage: twc task_number"
+        return 1
+    fi
+    t do "$1"
+}
 
 # Modern alternatives
 alias ls='exa -al --color=always --group-directories-first'
