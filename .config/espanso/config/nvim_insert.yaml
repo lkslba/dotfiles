@@ -1,0 +1,15 @@
+# $CONFIG/config/nvim.yml
+name: nvim
+filter_class: Kitty # This will match both vim and nvim
+
+# Just change the paste shortcut
+#paste_shortcut: "CTRL+SHIFT+V" # or try alternatives like:
+# paste_shortcut: "SHIFT+INSERT"
+# paste_shortcut: "CTRL+SHIFT+]"
+
+backend: clipboard # inject setting
+disable_x11_fast_inject: true # change inject mode.
+
+# Optional: you might want to adjust these delays if the paste isn't reliable
+#pre_paste_delay: 100
+#paste_shortcut_event_delay: 10

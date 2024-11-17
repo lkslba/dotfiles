@@ -1,0 +1,185 @@
+matches:
+  # LaTeX Basics
+  - trigger: ";beg"
+    label: "LaTeX begin/end block"
+    replace: |
+      \begin{$|$}
+
+      \end{$1}
+
+  - trigger: ";beq"
+    label: "LaTeX equation block"
+    replace: |
+      \begin{equation}
+      $|$
+      \end{equation}
+
+  - trigger: ";balign"
+    label: "LaTeX align block"
+    replace: |
+      \begin{align}
+      $|$
+      \end{align}
+
+  - trigger: ";bitem"
+    label: "LaTeX itemize block"
+    replace: |
+      \begin{itemize}
+          \item $|$
+      \end{itemize}
+
+  - trigger: ";benum"
+    label: "LaTeX enumerate block"
+    replace: |
+      \begin{enumerate}
+          \item $|$
+      \end{enumerate}
+
+  # Math Shortcuts
+  - trigger: ";fr"
+    label: "LaTeX fraction"
+    replace: "\\frac{$|$}{}"
+
+  - trigger: ";sum"
+    label: "LaTeX sum"
+    replace: "\\sum_{$|$}^{}"
+
+  - trigger: ";int"
+    label: "LaTeX integral"
+    replace: "\\int_{$|$}^{}"
+
+  - trigger: ";sqrt"
+    label: "LaTeX square root"
+    replace: "\\sqrt{$|$}"
+
+  - trigger: ";vec"
+    label: "LaTeX vector"
+    replace: "\\vec{$|$}"
+
+  # Greek Letters
+  - trigger: ";alpha"
+    replace: "\\alpha"
+
+  - trigger: ";beta"
+    replace: "\\beta"
+
+  - trigger: ";gamma"
+    replace: "\\gamma"
+
+  - trigger: ";delta"
+    replace: "\\delta"
+
+  - trigger: ";theta"
+    replace: "\\theta"
+
+  - trigger: ";lambda"
+    replace: "\\lambda"
+
+  - trigger: ";pi"
+    replace: "\\pi"
+
+  - trigger: ";sigma"
+    replace: "\\sigma"
+
+  - trigger: ";omega"
+    replace: "\\omega"
+
+  # Common Math Operators
+  - trigger: ";inf"
+    replace: "\\infty"
+
+  - trigger: ";leq"
+    replace: "\\leq"
+
+  - trigger: ";geq"
+    replace: "\\geq"
+
+  - trigger: ";neq"
+    replace: "\\neq"
+
+  - trigger: ";approx"
+    replace: "\\approx"
+
+  - trigger: ";pm"
+    replace: "\\pm"
+
+  - trigger: ";cdot"
+    replace: "\\cdot"
+
+  # Document Structure
+  - trigger: ";sec"
+    label: "LaTeX section"
+    replace: "\\section{$|$}"
+
+  - trigger: ";ssec"
+    label: "LaTeX subsection"
+    replace: "\\subsection{$|$}"
+
+  - trigger: ";sssec"
+    label: "LaTeX subsubsection"
+    replace: "\\subsubsection{$|$}"
+
+  - trigger: ";chap"
+    label: "LaTeX chapter"
+    replace: "\\chapter{$|$}"
+
+  # Table/Figure Environment
+  - trigger: ";btab"
+    label: "LaTeX table environment"
+    replace: |
+      \begin{table}[htbp]
+          \centering
+          \caption{$|$}
+          \label{tab:}
+          \begin{tabular}{cc}
+              \hline
+              Header 1 & Header 2 \\
+              \hline
+              & \\
+              \hline
+          \end{tabular}
+      \end{table}
+
+  - trigger: ";bfig"
+    label: "LaTeX figure environment"
+    replace: |
+      \begin{figure}[htbp]
+          \centering
+          \includegraphics[width=0.8\textwidth]{$|$}
+          \caption{}
+          \label{fig:}
+      \end{figure}
+
+  # References
+  - trigger: ";ref"
+    replace: "\\ref{$|$}"
+
+  - trigger: ";cite"
+    replace: "\\cite{$|$}"
+
+  - trigger: ";label"
+    replace: "\\label{$|$}"
+
+  # Document Template
+  - trigger: ";template"
+    label: "Basic LaTeX document template"
+    replace: |
+      \documentclass[12pt,a4paper]{article}
+
+      \usepackage[utf8]{inputenc}
+      \usepackage[T1]{fontenc}
+      \usepackage{amsmath}
+      \usepackage{amsfonts}
+      \usepackage{amssymb}
+      \usepackage{graphicx}
+      \usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+      \title{$|$}
+      \author{Lukas Leuba}
+      \date{\today}
+
+      \begin{document}
+
+      \maketitle
+
+      \end{document}

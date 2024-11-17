@@ -1,0 +1,412 @@
+# Global configuration - applies to all matches
+keyboard_layout:
+  layout: ch # Swiss layout
+  variant: de # German variant
+  model: pc105 # Standard European keyboard model
+
+# Global variables
+global_vars:
+  - name: name
+    type: echo
+    params:
+      echo: "Lukas Leuba"
+  - name: email
+    type: echo
+    params:
+      echo: "me@lukasleuba.ch"
+
+matches:
+  # Email addresses
+  - trigger: ";me"
+    replace: "{{email}}"
+  - trigger: ";hot"
+    replace: "lukas.leuba@hotmail.ch"
+  - trigger: ";book"
+    replace: "bookandbuy@protonmail.ch"
+
+  # Date and Time
+  - trigger: ";date"
+    replace: "{{mydate}}"
+    label: "Insert current date (YYYY-MM-DD)"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%Y-%m-%d"
+
+  - trigger: ";time"
+    replace: "{{mytime}}"
+    label: "Insert current time (HH:MM)"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%H:%M"
+
+  - trigger: ";dtime"
+    replace: "{{mydatetime}}"
+    label: "Insert current date and time (ISO format)"
+    vars:
+      - name: mydatetime
+        type: date
+        params:
+          format: "%Y-%m-%dT%H:%M:%S%:z"
+
+  # Common Characters
+  - trigger: ";deg"
+    replace: "°"
+
+  - trigger: ";copy"
+    replace: "©"
+
+  - trigger: ";tm"
+    replace: "™"
+
+  - trigger: ";reg"
+    replace: "®"
+
+  # Hugo Blog Commands
+  - trigger: ";hnew"
+    replace: "hugo new posts/$|$.md"
+
+  - trigger: ";hserve"
+    replace: "hugo server -D"
+
+  # Special Characters
+  - trigger: ";lt"
+    replace: "<"
+  - trigger: ";gt"
+    replace: ">"
+  - trigger: ";til"
+    replace: "~"
+  - trigger: ";bs"
+    replace: "\\"
+  - trigger: ";ob"
+    replace: "{"
+  - trigger: ";cb"
+    replace: "}"
+  - trigger: ";obr"
+    replace: "["
+  - trigger: ";cbr"
+    replace: "]"
+  - trigger: ";car"
+    replace: "^"
+
+  # System Commands
+  - trigger: ";keymap"
+    replace: "xmodmap /home/lkslba/.xmodmap-luk-nuc"
+
+  # Document Headers
+  - trigger: ";mdhead"
+    label: "Insert simple markdown post header"
+    replace: |
+      +++
+      title = ""
+      date = {{date}}
+      author = "Lukas Leuba"
+      draft = true
+      +++
+
+      $|$
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%Y-%m-%dT%H:%M:%S+01:00"
+
+  # Detailed markdown post header
+  - trigger: ";mdpost"
+    label: "Insert detailed markdown post header"
+    replace: |
+      +++
+      title = ""
+      date = {{date}}
+      author = "Lukas Leuba"
+      draft = false
+      description = ""
+      tags = []
+      categories = []
+      toc = true
+      +++
+
+      $|$
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%Y-%m-%dT%H:%M:%S+01:00"
+  # Personal Information & Signatures
+  - trigger: ";sig"
+    label: "Insert full signature"
+    replace: |
+      {{name}}
+      Bottigenstrasse 275
+      3019 Bern
+      +41 78 927 06 43
+      {{email}}
+
+  - trigger: ";sig"
+    label: "Insert light signature"
+    replace: |
+      Best regards,
+      {{name}}
+
+  - trigger: ";sig"
+    label: "Insert light signature"
+    replace: |
+      Freundliche Grüsse,
+      {{name}}
+
+  # Utility matches
+  - trigger: ";uuid"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "/usr/bin/uuidgen"
+  # Additional Useful Matches
+  - trigger: ";now"
+    replace: "It's {{time}} on {{date}}"
+    vars:
+      - name: time
+        type: date
+        params:
+          format: "%H:%M"
+      - name: date
+        type: date
+        params:
+          format: "%A, %B %d, %Y"
+
+  - trigger: ";path"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "pwd"
+
+  # Shebangs and Script Headers
+  - trigger: ";#!"
+    label: "Basic bash shebang"
+    replace: "#!/bin/bash"
+
+  - trigger: ";#py"
+    label: "Python shebang"
+    replace: "#!/usr/bin/env python3"
+
+  - trigger: ";#sh"
+    label: "Full bash script header"
+    replace: |
+      #!/bin/bash
+      #
+      # {{filename}}
+      # Created: {{date}}
+      # Author: Lukas Leuba
+      #
+      # Description:
+      # $|$
+
+      set -euo pipefail
+    vars:
+      - name: date
+        type: date
+        params:
+          format: "%Y-%m-%d"
+      - name: filename
+        type: shell
+        params:
+          cmd: 'basename "$PWD"'
+
+  # Markdown Formatting
+  - trigger: ";mc"
+    label: "Markdown code block"
+    replace: |
+      ```$|$
+
+      ```
+
+  - trigger: ";mpy"
+    label: "Markdown Python code block"
+    replace: |
+      ```python
+      $|$
+      ```
+
+  - trigger: ";mbash"
+    label: "Markdown bash code block"
+    replace: |
+      ```bash
+      $|$
+      ```
+
+  - trigger: ";myaml"
+    label: "Markdown YAML code block"
+    replace: |
+      ```yaml
+      $|$
+      ```
+
+  - trigger: ";mq"
+    label: "Markdown quote"
+    replace: |
+      > $|$
+
+  - trigger: ";mqi"
+    label: "Markdown quote with italic"
+    replace: |
+      > *$|$*
+
+  - trigger: ";ml"
+    label: "Markdown link"
+    replace: "[$|$]()"
+
+  - trigger: ";mi"
+    label: "Markdown image"
+    replace: "![$|$]()"
+
+  - trigger: ";mt"
+    label: "Markdown table"
+    replace: |
+      | Header 1 | Header 2 |
+      |----------|----------|
+      | $|$      |          |
+
+  - trigger: ";mh1"
+    label: "Markdown h1"
+    replace: "# $|$"
+
+  - trigger: ";mh2"
+    label: "Markdown h2"
+    replace: "## $|$"
+
+  - trigger: ";mh3"
+    label: "Markdown h3"
+    replace: "### $|$"
+
+  - trigger: ";mtask"
+    label: "Markdown task"
+    replace: "- [ ] $|$"
+
+  - trigger: ";mdone"
+    label: "Markdown completed task"
+    replace: "- [x] $|$"
+
+  # Common Emojis
+  - trigger: ";ok"
+    replace: "✓"
+
+  - trigger: ";check"
+    replace: "✅"
+
+  - trigger: ";x"
+    replace: "❌"
+
+  - trigger: ";warn"
+    replace: "⚠️"
+
+  - trigger: ";note"
+    replace: "📝"
+
+  - trigger: ";info"
+    replace: "ℹ️"
+
+  - trigger: ";star"
+    replace: "⭐"
+
+  - trigger: ";bug"
+    replace: "🐛"
+
+  - trigger: ";idea"
+    replace: "💡"
+
+  - trigger: ";imp"
+    replace: "❗"
+
+  - trigger: ";quest"
+    replace: "❓"
+
+  - trigger: ";eyes"
+    replace: "👀"
+
+  - trigger: ";thumb"
+    replace: "👍"
+
+  - trigger: ";fire"
+    replace: "🔥"
+
+  - trigger: ";rocket"
+    replace: "🚀"
+
+  - trigger: ";doc"
+    replace: "📄"
+
+  - trigger: ";folder"
+    replace: "📁"
+
+  - trigger: ";gear"
+    replace: "⚙️"
+
+  - trigger: ";time"
+    replace: "⏰"
+
+  - trigger: ";tada"
+    replace: "🎉"
+
+  - trigger: ";lightning"
+    replace: "⚡"
+
+  # Markdown Code Blocks for Different Languages
+  - trigger: ";mjs"
+    replace: |
+      ```javascript
+      $|$
+      ```
+
+  - trigger: ";mcpp"
+    replace: |
+      ```cpp
+      $|$
+      ```
+
+  - trigger: ";msql"
+    replace: |
+      ```sql
+      $|$
+      ```
+
+  - trigger: ";mhtml"
+    replace: |
+      ```html
+      $|$
+      ```
+
+  - trigger: ";mcss"
+    replace: |
+      ```css
+      $|$
+      ```
+
+  # Advanced Markdown Templates
+  - trigger: ";mdetails"
+    label: "Markdown collapsible section"
+    replace: |
+      <details>
+      <summary>$|$</summary>
+
+      </details>
+
+  - trigger: ";mtip"
+    label: "Markdown tip box"
+    replace: |
+      > 💡 **Tip:** $|$
+
+  - trigger: ";mwarn"
+    label: "Markdown warning box"
+    replace: |
+      > ⚠️ **Warning:** $|$
+
+  - trigger: ";mnote"
+    label: "Markdown note box"
+    replace: |
+      > 📝 **Note:** $|$

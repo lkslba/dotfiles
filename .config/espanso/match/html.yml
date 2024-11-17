@@ -1,0 +1,234 @@
+matches:
+  # Basic HTML Structure
+  - trigger: ";html5"
+    label: "Basic HTML5 template"
+    replace: |
+      <!DOCTYPE html>
+      <html lang="en">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>$|$</title>
+      </head>
+      <body>
+
+      </body>
+      </html>
+
+  - trigger: ";meta"
+    label: "Common meta tags"
+    replace: |
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="$|$">
+      <meta name="author" content="Lukas Leuba">
+
+  # Common Elements
+  - trigger: ";div"
+    replace: "<div>$|$</div>"
+
+  - trigger: ";p"
+    replace: "<p>$|$</p>"
+
+  - trigger: ";h1"
+    replace: "<h1>$|$</h1>"
+
+  - trigger: ";h2"
+    replace: "<h2>$|$</h2>"
+
+  - trigger: ";h3"
+    replace: "<h3>$|$</h3>"
+
+  - trigger: ";a"
+    replace: '<a href="$|$"></a>'
+
+  - trigger: ";img"
+    replace: '<img src="$|$" alt="">'
+
+  - trigger: ";btn"
+    replace: '<button type="button">$|$</button>'
+
+  # Lists
+  - trigger: ";ul"
+    replace: |
+      <ul>
+          <li>$|$</li>
+      </ul>
+
+  - trigger: ";ol"
+    replace: |
+      <ol>
+          <li>$|$</li>
+      </ol>
+
+  - trigger: ";li"
+    replace: "<li>$|$</li>"
+
+  # Forms
+  - trigger: ";form"
+    label: "Basic form template"
+    replace: |
+      <form action="$|$" method="POST">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name">
+
+          <button type="submit">Submit</button>
+      </form>
+
+  - trigger: ";input"
+    replace: '<input type="$|$" id="" name="">'
+
+  - trigger: ";label"
+    replace: '<label for="$|$"></label>'
+
+  - trigger: ";select"
+    replace: |
+      <select id="$|$" name="">
+          <option value="">Select an option</option>
+      </select>
+
+  # Tables
+  - trigger: ";table"
+    replace: |
+      <table>
+          <thead>
+              <tr>
+                  <th>$|$</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td></td>
+              </tr>
+          </tbody>
+      </table>
+
+  # Common Attributes
+  - trigger: ";class"
+    replace: 'class="$|$"'
+
+  - trigger: ";id"
+    replace: 'id="$|$"'
+
+  - trigger: ";style"
+    replace: 'style="$|$"'
+
+  # Flexbox Container
+  - trigger: ";flex"
+    replace: |
+      <div class="flex-container">
+          <div>$|$</div>
+      </div>
+      <style>
+      .flex-container {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+      }
+      </style>
+
+  # Grid Container
+  - trigger: ";grid"
+    replace: |
+      <div class="grid-container">
+          <div>$|$</div>
+      </div>
+      <style>
+      .grid-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+      }
+      </style>
+
+  # Common Components
+  - trigger: ";navbar"
+    replace: |
+      <nav>
+          <ul>
+              <li><a href="$|$">Home</a></li>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Contact</a></li>
+          </ul>
+      </nav>
+
+  - trigger: ";footer"
+    replace: |
+      <footer>
+          <p>&copy; {{year}} Lukas Leuba. All rights reserved.</p>
+      </footer>
+    vars:
+      - name: year
+        type: date
+        params:
+          format: "%Y"
+
+  - trigger: ";card"
+    replace: |
+      <div class="card">
+          <img src="$|$" alt="">
+          <div class="card-content">
+              <h3></h3>
+              <p></p>
+          </div>
+      </div>
+      <style>
+      .card {
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          overflow: hidden;
+      }
+      .card-content {
+          padding: 1rem;
+      }
+      </style>
+
+  # Script and Style Tags
+  - trigger: ";script"
+    replace: |
+      <script>
+          $|$
+      </script>
+
+  - trigger: ";style"
+    replace: |
+      <style>
+          $|$
+      </style>
+
+  - trigger: ";link"
+    replace: '<link rel="stylesheet" href="$|$">'
+
+  # Semantic Elements
+  - trigger: ";header"
+    replace: |
+      <header>
+          $|$
+      </header>
+
+  - trigger: ";main"
+    replace: |
+      <main>
+          $|$
+      </main>
+
+  - trigger: ";article"
+    replace: |
+      <article>
+          $|$
+      </article>
+
+  - trigger: ";section"
+    replace: |
+      <section>
+          $|$
+      </section>
+
+  # Responsive Image
+  - trigger: ";respimg"
+    replace: |
+      <picture>
+          <source srcset="$|$-large.jpg" media="(min-width: 800px)">
+          <source srcset="$|$-medium.jpg" media="(min-width: 400px)">
+          <img src="$|$-small.jpg" alt="">
+      </picture>

@@ -54,6 +54,16 @@ vim.opt.splitright = true -- Put new windows right of current
 vim.opt.hlsearch = true -- Highlight search results
 vim.opt.incsearch = true -- Show search matches as you type
 
+-- Add filetype detection
+vim.filetype.add({
+	extension = {
+		frag = "glsl",
+		vert = "glsl",
+		glsl = "glsl",
+		comp = "glsl",
+	},
+})
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -275,11 +285,8 @@ require("lazy").setup({
 				vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
 				vim.keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Find word under cursor" })
 
-				-- File browser
-				vim.keymap.set("n", "<leader>fb", "<cmd>Telescope file_browser<cr>", { desc = "Browse files" })
-
 				-- Buffers, help, commands
-				vim.keymap.set("n", "<leader>bb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+				vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
 				vim.keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Find help" })
 				vim.keymap.set("n", "<leader>fc", "<cmd>Telescope commands<cr>", { desc = "Find commands" })
 
@@ -334,6 +341,7 @@ require("lazy").setup({
 					ensure_installed = {
 						"markdown",
 						"markdown_inline", -- Important for inline elements
+						"glsl",
 					},
 					highlight = {
 						enable = true,
@@ -343,6 +351,12 @@ require("lazy").setup({
 			end,
 		},
 
+		-- glsl support
+		{
+			"tikhomirov/vim-glsl",
+			event = "BufRead",
+			ft = { "glsl", "vert", "frag", "geom", "comp" },
+		},
 		-- LSP and formatting
 		{
 			"neovim/nvim-lspconfig",
@@ -388,6 +402,7 @@ require("lazy").setup({
 				-- C/C++
 				lspconfig.clangd.setup({
 					capabilities = capabilities,
+
 					cmd = {
 						"clangd",
 						"--background-index",
@@ -450,6 +465,7 @@ require("lazy").setup({
 						javascript = { "prettier" },
 						typescript = { "prettier" },
 						json = { "prettier" },
+						yaml = { "prettier" },
 						html = { "prettier" },
 						css = { "prettier" },
 						markdown = { "prettier" },
@@ -735,4 +751,3 @@ require("lazy").setup({
 })
 
 require("config.markdown").setup()
-require("config.agenda").setup()
