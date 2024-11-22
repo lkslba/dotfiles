@@ -73,6 +73,8 @@ for p in "${paths[@]}"; do
 done
 export PATH
 
+#export MANPAGER='nvim +MAN!'
+
 # ===== Terminal Colors =====
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
